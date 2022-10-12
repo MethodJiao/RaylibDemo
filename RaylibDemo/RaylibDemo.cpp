@@ -7,8 +7,8 @@
 #include <vector>
 
 using namespace std;
-#define CUBECOUNT 100
-#define SPEED 70
+#define CUBECOUNT 500
+#define SPEED 30
 
 struct CubeInfo
 {
@@ -32,7 +32,7 @@ int WinMain()
 
 	// Define the camera to look into our 3d world
 	Camera3D camera = { 0 };
-	camera.position = Vector3{ 25.0f, 25.0f, 25.0f }; // Camera position
+	camera.position = Vector3{ 35.0f, 35.0f, 35.0f }; // Camera position
 	camera.target = Vector3{ 0.0f, 0.0f, 0.0f };      // Camera looking at point
 	camera.up = Vector3{ 0.0f, 1.0f, 0.0f };          // Camera up vector (rotation towards target)
 	camera.fovy = 45.0f;                                // Camera field-of-view Y
@@ -45,16 +45,16 @@ int WinMain()
 	{
 		CubeInfo info;
 		Vector3 cubePosition;
-		cubePosition.x = float(rand() % 20 + 1);
-		cubePosition.y = float(rand() % 20 + 1);
-		cubePosition.z = float(rand() % 20 + 1);
+		cubePosition.x = float(rand() % 30 + 1);
+		cubePosition.y = float(rand() % 30 + 1);
+		cubePosition.z = float(rand() % 30 + 1);
 		info.cubePosition = cubePosition;
 		info.alpha = float((rand() % 10) / 10.0);
 		cubeInfoVec.push_back(info);
 	}
 	SetCameraMode(camera, CAMERA_FREE); // Set a free camera mode
 
-	SetTargetFPS(240);                   // Set our game to run at 240 frames-per-second
+	SetTargetFPS(144);                   // Set our game to run at 240 frames-per-second
 	//--------------------------------------------------------------------------------------
 
 	// Main game loop
@@ -80,16 +80,16 @@ int WinMain()
 			if (cubeInfoVec[i].alpha < 0.05)
 			{
 				cubeInfoVec[i].alpha = float((rand() % 10) / 10.0);
-				cubeInfoVec[i].cubePosition.x = float(rand() % 20 + 1);
-				cubeInfoVec[i].cubePosition.y = float(rand() % 20 + 1);
-				cubeInfoVec[i].cubePosition.z = float(rand() % 20 + 1);
+				cubeInfoVec[i].cubePosition.x = float(rand() % 30 + 1);
+				cubeInfoVec[i].cubePosition.y = float(rand() % 30 + 1);
+				cubeInfoVec[i].cubePosition.z = float(rand() % 30 + 1);
 			}
 			else
 			{
 				cubeInfoVec[i].alpha -= float(0.1 / SPEED);
 			}
 			DrawCube(cubeInfoVec[i].cubePosition, 2.0f, 2.0f, 2.0f, Fade(VIOLET, cubeInfoVec[i].alpha));
-			DrawCubeWires(cubeInfoVec[i].cubePosition, 2.0f, 2.0f, 2.0f, Fade(BLACK, cubeInfoVec[i].alpha));
+			//DrawCubeWires(cubeInfoVec[i].cubePosition, 2.0f, 2.0f, 2.0f, Fade(BLACK, cubeInfoVec[i].alpha));
 		}
 
 		//DrawGrid(10, 1.0f);
