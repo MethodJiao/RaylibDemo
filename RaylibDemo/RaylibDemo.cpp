@@ -5,16 +5,25 @@
 #include "raylib.h"
 #include <stdlib.h>
 #include <vector>
+
 using namespace std;
 #define CUBECOUNT 100
 #define SPEED 70
+
 struct CubeInfo
 {
 	Vector3 cubePosition;
 	float alpha;
 };
+
+#ifdef _DEBUG
 int main()
+#endif
+#ifndef _DEBUG
+int WinMain()
+#endif
 {
+
 	// Initialization
 	//--------------------------------------------------------------------------------------
 	const int screenWidth = 800;
