@@ -6,8 +6,8 @@
 #include <stdlib.h>
 #include <vector>
 using namespace std;
-#define CUBECOUNT 30
-#define SPEED 50.0
+#define CUBECOUNT 100
+#define SPEED 70
 struct CubeInfo
 {
 	Vector3 cubePosition;
@@ -69,9 +69,12 @@ int main()
 
 		for (size_t i = 0; i < CUBECOUNT; i++)
 		{
-			if (cubeInfoVec[i].alpha<0.1)
+			if (cubeInfoVec[i].alpha < 0.05)
 			{
 				cubeInfoVec[i].alpha = float((rand() % 10) / 10.0);
+				cubeInfoVec[i].cubePosition.x = float(rand() % 20 + 1);
+				cubeInfoVec[i].cubePosition.y = float(rand() % 20 + 1);
+				cubeInfoVec[i].cubePosition.z = float(rand() % 20 + 1);
 			}
 			else
 			{
