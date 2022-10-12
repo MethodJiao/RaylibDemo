@@ -15,7 +15,6 @@ struct CubeInfo
 	Vector3 cubePosition;
 	float alpha;
 };
-
 #ifdef _DEBUG
 int main()
 #endif
